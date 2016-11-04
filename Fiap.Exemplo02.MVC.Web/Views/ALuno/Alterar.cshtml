@@ -16,7 +16,10 @@
 
 @using (@Html.BeginForm())
 {
-    <!-- Já vai vir com os valores do model -->
+    <!-- Já vai vir com os valores do model  -->
+
+    @Html.HiddenFor(a => a.Id);
+
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">

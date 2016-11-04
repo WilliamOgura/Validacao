@@ -13,3 +13,7 @@
     }
 
 });
+
+function passarID(id) {
+    $("#Id").val(id);
+}
