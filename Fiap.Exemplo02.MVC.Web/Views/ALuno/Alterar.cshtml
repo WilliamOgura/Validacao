@@ -28,16 +28,16 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                @Html.LabelFor(a => a.Bolsa)
-                @Html.TextBoxFor(a => a.Bolsa, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
+                @Html.LabelFor(a => a.DataNascimento)
+                @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                @Html.LabelFor(a => a.DataNascimento)
-                @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
+                @Html.CheckBoxFor(a => a.Bolsa) <!--qualquer atributo do html, (arroba) é escape-->
+                @Html.LabelFor(a => a.Bolsa)
             </div>
         </div>
     </div>
