@@ -33,7 +33,7 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Alterar", "Alterar", "Aluno", new { id = item.Id },new { @class = "btn btn-primary"})
+                @Html.ActionLink("Alterar", "Alterar", new { id = @item.Id },new { @class = "btn btn-primary"})
             </td>
         </tr>
     }
