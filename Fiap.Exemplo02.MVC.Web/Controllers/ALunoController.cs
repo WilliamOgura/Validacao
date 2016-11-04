@@ -41,6 +41,7 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
             Aluno a = ctx.Aluno.Find(id);
             ctx.Aluno.Remove(a);
             ctx.SaveChanges();
+            TempData["msg"] = "Aluno excluído com sucesso";
             return RedirectToAction("Listar");
         }
 
