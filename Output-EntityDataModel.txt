@@ -1,0 +1,6 @@
+﻿Generated model file: Banco.edmx.
+Loading metadata from the database took 00:00:00.4814816.
+Generating the model took 00:00:01.1137369.
+Generated model file: Banco.edmx.
+Loading metadata from the database took 00:00:00.3443353.
+Generating the model took 00:00:00.3454809.
