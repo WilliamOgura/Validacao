@@ -61,5 +61,14 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
             return View(a);
         }
 
+        [HttpGet]
+        public ActionResult Buscar(string nomeBusca)
+        {
+            //busca o aluno no banco por parte do nome
+            List<Aluno> resultado = ctx.Aluno.Where(a => a.Nome.Contains(nomeBusca)).ToList();
+            //passo direto para a view de listar e não para a action
+            return View("Listar",resultado);
+        }
+
     }
 }

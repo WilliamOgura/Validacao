@@ -13,6 +13,12 @@
     </div>
 }
 
+@using (Html.BeginForm("Buscar","Aluno",FormMethod.Get,new { @class = "form-inline"}))
+{
+    @Html.TextBox("nomeBusca", "" , new { @class = "form-control", placeholder="Digite um nome"})
+    <input type="submit" class="btn btn-primary" value="Buscar" />
+}
+
 <table class="table">
     <tr>
         <th>ID</th>
@@ -36,10 +42,10 @@
                 <input type="button" value="Excluir" class="btn btn-danger" data-toggle="modal" data-target="#myModal" onclick="passarID(@item.Id)"/>
             </td>
             <td>
-                @Html.ActionLink("Alterar", "Alterar", new { id = @item.Id },new { @class = "btn btn-primary"})
+                @Html.ActionLink("Alterar", "Alterar", new { id = @item.Id }, new { @class = "btn btn-primary" })
             </td>
         </tr>
-    }
+        }
 </table>
 
 @Html.Partial("_ModalConfirmacao");
