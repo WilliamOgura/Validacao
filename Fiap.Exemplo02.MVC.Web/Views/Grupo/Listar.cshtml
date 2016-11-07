@@ -15,6 +15,8 @@
         <th>Data Inicio</th>
         <th>Data Término</th>
         <th>Entregue</th>
+        <th></th>
+        <th></th>
     </tr>
 
     @foreach(var g in Model)
@@ -27,7 +29,11 @@
             <td>@g.Projeto.DataInicio</td>
             <td>@g.Projeto.DataTermino</td>
             <td>@g.Projeto.Entregue</td>
+            <td>@Html.ActionLink("Editar","Editar",new { id = @g.Id},new { @class = "btn btn-primary"})</td>
+            <td><button onclick="idGrupo.value = @g.Id" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Excluir</button></td>
         </tr>
     }
 </table>
+
+@Html.Partial("_ModalConfirmacao");
 
