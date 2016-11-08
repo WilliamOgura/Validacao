@@ -27,7 +27,8 @@ namespace Fiap.Exemplo02.MVC.Web.Models
         public Nullable<double> Desconto { get; set; }
         public int GrupoId { get; set; }
     
-        public virtual Grupo Grupo { get; set; }
+        //virtual, traz na memoria (EagerLoad)
+        public Grupo Grupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Professor> Professor { get; set; }
     }

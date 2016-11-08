@@ -200,6 +200,9 @@
     <Compile Include="Models\Grupo.cs">
       <DependentUpon>Banco.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Professor.cs">
+      <DependentUpon>Banco.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Projeto.cs">
       <DependentUpon>Banco.tt</DependentUpon>
     </Compile>

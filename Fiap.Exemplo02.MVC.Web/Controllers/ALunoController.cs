@@ -27,13 +27,16 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
             ctx.Aluno.Add(aluno);
             ctx.SaveChanges();
             ViewBag.msg = "Cadastrado com sucesso";
+            List<Grupo> grupos = ctx.Grupo.ToList();
+            ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
             return View();
         }
 
         [HttpGet]
         public ActionResult Listar()
         {
-            var lista = ctx.Aluno.ToList();
+            //include -> busca o relacionamento (preenche o grupo que o aluno possui), faz o join
+            var lista = ctx.Aluno.Include("Grupo").ToList();
             return View(lista);
         }
 

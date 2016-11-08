@@ -26,6 +26,7 @@
         <th>Data Nascimento</th>
         <th>Bolsa</th>
         <th>Desconto</th>
+        <th>Grupo</th>
         <th></th>
     </tr>
 
@@ -38,6 +39,7 @@
             <td>@item.DataNascimento</td>
             <td>@item.Bolsa</td>
             <td>@item.Desconto</td>
+            <td>@item.Grupo.Nome</td>
             <td>
                 <input type="button" value="Excluir" class="btn btn-danger" data-toggle="modal" data-target="#myModal" onclick="passarID(@item.Id)"/>
             </td>
