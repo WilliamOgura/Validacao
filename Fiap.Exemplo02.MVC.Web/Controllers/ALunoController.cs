@@ -16,6 +16,8 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         [HttpGet]
         public ActionResult Cadastrar()
         {
+            List<Grupo> grupos = ctx.Grupo.ToList();
+            ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
             return View();
         }
 
