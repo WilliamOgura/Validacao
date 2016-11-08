@@ -28,5 +28,6 @@ namespace Fiap.Exemplo02.MVC.Web.Models
         public virtual DbSet<Aluno> Aluno { get; set; }
         public virtual DbSet<Grupo> Grupo { get; set; }
         public virtual DbSet<Projeto> Projeto { get; set; }
+        public virtual DbSet<C__RefactorLog> C__RefactorLog { get; set; }
     }
 }
