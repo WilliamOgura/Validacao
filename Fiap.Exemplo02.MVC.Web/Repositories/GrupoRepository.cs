@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Fiap.Exemplo02.MVC.Web.Repositories
 {
-    public class GrupoRepository : IGrupoRepository
+    public class GrupoRepository : IRepository<Grupo>
     {
         private PortalContext _context;
 
@@ -21,6 +21,7 @@ namespace Fiap.Exemplo02.MVC.Web.Repositories
         public void Atualizar(Grupo grupo)
         {
             _context.Entry(grupo).State = EntityState.Modified;
+            _context.Entry(grupo.Projeto).State = EntityState.Modified;
         }
 
         public ICollection<Grupo> BuscarPor(Expression<Func<Grupo, bool>> filtro)
@@ -46,7 +47,9 @@ namespace Fiap.Exemplo02.MVC.Web.Repositories
 
         public void Remover(int id)
         {
-            _context.Grupo.Remove(_context.Grupo.Find(id));
+            Grupo g = _context.Grupo.Find(id);
+            _context.Projeto.Remove(g.Projeto);
+            _context.Grupo.Remove(g);
         }
     }
 }

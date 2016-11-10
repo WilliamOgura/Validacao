@@ -80,10 +80,20 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         }
 
         [HttpGet]
-        public ActionResult Buscar(string nomeBusca)
+        public ActionResult Buscar(string tipoBusca,string nomeBusca)
         {
-            //busca o aluno no banco por parte do nome
-            List<Aluno> resultado = _unit.AlunoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca)).ToList();
+            List<Aluno> resultado = new List<Aluno>();
+        
+            if (tipoBusca.Equals("Aluno"))
+            {
+                //busca o aluno no banco por parte do nome
+               resultado = _unit.AlunoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca)).ToList();
+            }
+            else
+            {
+                //busca o aluno no banco por nome do grupo
+                resultado = _unit.AlunoRepository.BuscarPor(a => a.Grupo.Nome.Contains(nomeBusca)).ToList();
+            }
             //passo direto para a view de listar e não para a action
             return View("Listar",resultado);
         }

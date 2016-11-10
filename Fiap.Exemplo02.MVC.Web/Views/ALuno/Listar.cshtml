@@ -13,8 +13,12 @@
     </div>
 }
 
-@using (Html.BeginForm("Buscar","Aluno",FormMethod.Get,new { @class = "form-inline"}))
+@using (Html.BeginForm("Buscar", "Aluno", FormMethod.Get, new { @class = "form-inline" }))
 {
+    <select name="tipoBusca" class="form-control">
+        <option>Aluno</option>
+        <option>Grupo</option>
+    </select>
     @Html.TextBox("nomeBusca", "" , new { @class = "form-control", placeholder="Digite um nome"})
     <input type="submit" class="btn btn-primary" value="Buscar" />
 }
@@ -50,5 +54,5 @@
         }
 </table>
 
-@Html.Partial("_ModalConfirmacao");
+@Html.Partial("_ModalConfirmacao")
 

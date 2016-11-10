@@ -1,4 +1,5 @@
 ﻿using Fiap.Exemplo02.MVC.Web.Models;
+using Fiap.Exemplo02.MVC.Web.UnitsOfWork;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -10,7 +11,7 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
 {
     public class GrupoController : Controller
     {
-        private PortalContext ctx = new PortalContext();
+        private UnitOfWork _unit = new UnitOfWork();
 
         [HttpGet]
         public ActionResult Cadastrar()
@@ -21,9 +22,8 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         [HttpPost]
         public ActionResult Cadastrar(Grupo grupo)
         {
-            ctx.Grupo.Add(grupo);
-            //ctx.Projeto.Add(projeto);
-            ctx.SaveChanges();
+            _unit.GrupoRepository.Cadastrar(grupo);
+            _unit.Save();
             TempData["msg"] = "Cadastro efetuado com sucesso";
             return View();
         }
@@ -31,36 +31,40 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         [HttpGet]
         public ActionResult Listar()
         {
-            List<Grupo> grupos = ctx.Grupo.ToList();
+            List<Grupo> grupos = (List<Grupo>) _unit.GrupoRepository.Listar();
             return View(grupos);
         }
 
         [HttpGet]
         public ActionResult Editar(int id)
         {
-            Grupo grupo = ctx.Grupo.Find(id);
+            Grupo grupo = _unit.GrupoRepository.BuscarPorId(id);
             return View(grupo);
         }
 
         [HttpPost]
         public ActionResult Editar(Grupo g)
         {
-            ctx.Entry(g).State = EntityState.Modified;
-            ctx.Entry(g.Projeto).State = EntityState.Modified;
-            ctx.SaveChanges();
+            _unit.GrupoRepository.Atualizar(g);
+            _unit.Save();
             TempData["msg"] = "Alterado com sucesso";
             return View(g);
         }
 
         public ActionResult Excluir(int idGrupo)
         {
-            Grupo g = ctx.Grupo.Find(idGrupo);
-            ctx.Projeto.Remove(g.Projeto);
-            ctx.Grupo.Remove(g);
-            ctx.SaveChanges();
+            _unit.GrupoRepository.Remover(idGrupo);
+            _unit.Save();
             return RedirectToAction("Listar");
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            _unit.Dispose();
+            base.Dispose(disposing);
         }
     }
 
+    
    
 }

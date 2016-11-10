@@ -9,7 +9,7 @@ using System.Data.Entity;
 
 namespace Fiap.Exemplo02.MVC.Web.Repositories
 {
-    class AlunoRepository : IAlunoRepository
+    class AlunoRepository : IRepository<Aluno>
     {
 
         private PortalContext _context;

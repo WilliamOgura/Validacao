@@ -12,10 +12,10 @@ namespace Fiap.Exemplo02.MVC.Web.UnitsOfWork
     {
         private PortalContext _context = new PortalContext();
 
-        private IAlunoRepository _alunoRepository;
-        private IGrupoRepository _grupoRepository;
+        private IRepository<Aluno> _alunoRepository;
+        private IRepository<Grupo> _grupoRepository;
 
-        public IGrupoRepository GrupoRepository
+        public IRepository<Grupo> GrupoRepository
         {
             get{
                 if (_grupoRepository == null)
@@ -27,7 +27,7 @@ namespace Fiap.Exemplo02.MVC.Web.UnitsOfWork
         }
 
 
-        public IAlunoRepository AlunoRepository
+        public IRepository<Aluno> AlunoRepository
         {
             get {
                 if(_alunoRepository == null)
