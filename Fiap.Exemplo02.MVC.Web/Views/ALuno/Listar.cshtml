@@ -4,7 +4,7 @@
     ViewBag.Title = "Listar";
 }
 
-<h2>Listar</h2>
+<h2>Listar Alunos</h2>
 
 @if (TempData["msg"] != null)
 {
@@ -15,12 +15,17 @@
 
 @using (Html.BeginForm("Buscar", "Aluno", FormMethod.Get, new { @class = "form-inline" }))
 {
-    <select name="tipoBusca" class="form-control">
-        <option>Aluno</option>
-        <option>Grupo</option>
-    </select>
-    @Html.TextBox("nomeBusca", "" , new { @class = "form-control", placeholder="Digite um nome"})
-    <input type="submit" class="btn btn-primary" value="Buscar" />
+    <div class="row">
+        <div class="col-md-3">
+            @Html.TextBox("nomeBusca", "", new { @class = "form-control", placeholder = "Digite um nome" })
+        </div>
+        <div class="col-md-3">
+            @Html.DropDownList("idGrupo", ViewBag.grupos as SelectList, "Selecione um Grupo", new { @class = "form-control" })
+        </div>
+        <div class="col-md-3">
+            <input type="submit" class="btn btn-primary" value="Buscar" />
+        </div>
+    </div>
 }
 
 <table class="table">
@@ -45,13 +50,13 @@
             <td>@item.Desconto</td>
             <td>@item.Grupo.Nome</td>
             <td>
-                <input type="button" value="Excluir" class="btn btn-danger" data-toggle="modal" data-target="#myModal" onclick="passarID(@item.Id)"/>
+                <input type="button" value="Excluir" class="btn btn-danger" data-toggle="modal" data-target="#myModal" onclick="passarID(@item.Id)" />
             </td>
             <td>
                 @Html.ActionLink("Alterar", "Alterar", new { id = @item.Id }, new { @class = "btn btn-primary" })
             </td>
         </tr>
-        }
+    }
 </table>
 
 @Html.Partial("_ModalConfirmacao")
