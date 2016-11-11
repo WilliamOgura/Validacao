@@ -20,7 +20,7 @@ namespace Fiap.Exemplo02.MVC.Web.UnitsOfWork
             get{
                 if (_grupoRepository == null)
                 {
-                    _grupoRepository = new GrupoRepository(_context);
+                    _grupoRepository = new GenericRepository<Grupo>(_context);
                 }
                 return _grupoRepository;
             }  
@@ -32,7 +32,7 @@ namespace Fiap.Exemplo02.MVC.Web.UnitsOfWork
             get {
                 if(_alunoRepository == null)
                 {
-                    _alunoRepository = new AlunoRepository(_context);
+                    _alunoRepository = new GenericRepository<Aluno>(_context);
                 }
                 return _alunoRepository;
             }
