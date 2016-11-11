@@ -14,7 +14,19 @@ namespace Fiap.Exemplo02.MVC.Web.UnitsOfWork
 
         private IRepository<Aluno> _alunoRepository;
         private IRepository<Grupo> _grupoRepository;
+        private IProfessorRepository _professorRepository; //funcionalidade específica
 
+        public IRepository<Professor> ProfessorRepository
+        {
+            get
+            {
+                if (_professorRepository == null)
+                {
+                    _professorRepository = new ProfessorRepository(_context);
+                }
+                return _professorRepository;
+            }
+        }
         public IRepository<Grupo> GrupoRepository
         {
             get{
