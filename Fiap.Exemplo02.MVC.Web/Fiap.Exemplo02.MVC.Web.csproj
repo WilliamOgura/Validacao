@@ -210,7 +210,9 @@
     <Compile Include="Repositories\AlunoRepository.cs" />
     <Compile Include="Repositories\GenericRepository.cs" />
     <Compile Include="Repositories\GrupoRepository.cs" />
+    <Compile Include="Repositories\IProfessorRepository.cs" />
     <Compile Include="Repositories\IRepository.cs" />
+    <Compile Include="Repositories\ProfessorRepository.cs" />
     <Compile Include="UnitsOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
