@@ -1,5 +1,4 @@
 ﻿@model Fiap.Exemplo02.MVC.Web.ViewModels.AlunoViewModel
-
 @{
     ViewBag.Title = "Cadastrar";
 }
@@ -12,6 +11,7 @@
         @ViewBag.msg
     </div>
 }
+@Html.ValidationSummary() <!--Todas as mensagens-->
 
 @using (@Html.BeginForm())
 {
@@ -21,6 +21,7 @@
             <div class="form-group">
                 @Html.LabelFor(a => a.Nome)
                 @Html.TextBoxFor(a => a.Nome, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
+                @Html.ValidationMessageFor(a=>a.Nome)
             </div>
         </div>
     </div>
@@ -29,7 +30,8 @@
             <div class="form-group">
                 @Html.LabelFor(a => a.DataNascimento)
                 @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
-            </div>
+                @Html.ValidationMessageFor(a => a.DataNascimento)
+              </div>
         </div>
     </div>
     <div class="row">
@@ -38,6 +40,7 @@
                 @Html.LabelFor(a => a.GrupoId)
                 <!-- Primeira propriedade é onde ele vai setar o valor escolhido-->
                 @Html.DropDownListFor(a => a.GrupoId, Model.ListaGrupo, "Selecione", new { @class = "form-control" })
+                @Html.ValidationMessageFor(a => a.GrupoId)
             </div>
         </div>
     </div>
@@ -60,6 +63,7 @@
             <div class="form-group">
                 @Html.CheckBoxFor(a => a.Bolsa) <!--qualquer atributo do html, (arroba) é escape-->
                 @Html.LabelFor(a => a.Bolsa)
+                @Html.ValidationMessageFor(a => a.Bolsa)
             </div>
         </div>
     </div>
@@ -68,6 +72,7 @@
             <div class="form-group">
                 @Html.LabelFor(a => a.Desconto)
                 @Html.TextBoxFor(a => a.Desconto, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
+                @Html.ValidationMessageFor(a => a.Desconto)
             </div>
         </div>
     </div>

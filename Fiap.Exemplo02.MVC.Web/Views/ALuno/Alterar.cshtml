@@ -1,5 +1,4 @@
-﻿@using Fiap.Exemplo02.MVC.Web.Models
-@model Aluno
+﻿@model Fiap.Exemplo02.MVC.Web.ViewModels.AlunoViewModel
 
 @{
     ViewBag.Title = "Alterar";
@@ -37,9 +36,9 @@
         </div>
     </div>
     <div>
-        @Html.LabelFor(a => a.Grupo)
+        @Html.LabelFor(a => a.GrupoId)
         <!-- Primeira propriedade é onde ele vai setar o valor escolhido-->
-        @Html.DropDownListFor(a => a.GrupoId, ViewBag.grupos as SelectList, "Selecione", new { @class = "form-control" })
+        @Html.DropDownListFor(a => a.GrupoId, Model.ListaGrupo, new { @class = "form-control" })
     </div>
     <div class="row">
         <div class="col-md-12">

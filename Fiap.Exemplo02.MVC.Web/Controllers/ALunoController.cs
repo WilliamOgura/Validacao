@@ -23,6 +23,7 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
             var viewModel = new AlunoViewModel();
             viewModel.ListaGrupo = ListarGrupos();
 
+
             List<Professor> lista = (List<Professor>)_unit.ProfessorRepository.Listar();
             ViewBag.professores = lista;
 
@@ -38,45 +39,51 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         [HttpGet]
         public ActionResult Listar()
         {
-            CarregarComboGrupo();
+            var viewModel = new AlunoViewModel();
 
             //include -> busca o relacionamento (preenche o grupo que o aluno possui), faz o join
             //var lista = ctx.Aluno.Include("Grupo").ToList();
-            var lista = _unit.AlunoRepository.Listar();
-            return View(lista);
+            viewModel.Alunos = _unit.AlunoRepository.Listar();
+            viewModel.ListaGrupo = ListarGrupos();
+            return View(viewModel);
         }
 
         [HttpGet]
         public ActionResult Alterar(int id)
         {
-            //SelectList
-            List<Grupo> grupos = (List<Grupo>)_unit.GrupoRepository.Listar();
-            ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
-
-            Aluno a = _unit.AlunoRepository.BuscarPorId(id);
-            return View(a);
+            //SelectList buscar objeto (aluno  ) no banco
+           var aluno = _unit.AlunoRepository.BuscarPorId(id);
+            var viewModel = new AlunoViewModel()
+            {
+                ListaGrupo = ListarGrupos(),
+                Nome = aluno.Nome,
+                Bolsa = aluno.Bolsa,
+                Desconto = aluno.Desconto,
+                Id = aluno.Id,
+                GrupoId = aluno.GrupoId,
+                DataNascimento = aluno.DataNascimento,
+            };
+                return View(viewModel);
         }
 
         [HttpGet]
-        public ActionResult Buscar(int? idGrupo, string nomeBusca) //permite ser Null
+        public ActionResult Buscar(int? idBusca, string nomeBusca) //permite ser Null
         {
             List<Aluno> resultado = new List<Aluno>();
+            var lista = _unit.AlunoRepository.BuscarPor(a =>a.Nome.Contains(nomeBusca) && (a.GrupoId == idBusca|| idBusca == null));
+        
+            var viewModel = new AlunoViewModel()
+            {
+                ListaGrupo = ListarGrupos(),
+                Alunos = lista
+            };
 
-            if (idGrupo == null)
-            {
-                //busca o aluno no banco por parte do nome
-                resultado = _unit.AlunoRepository.BuscarPor(a => a.Nome.Contains(nomeBusca)).ToList();
-            }
-            else
-            {
-                //busca o aluno no banco por nome do grupo
-                resultado = _unit.AlunoRepository.BuscarPor(a => a.Grupo.Id == idGrupo && a.Nome.Contains(nomeBusca)).ToList();
-            }
+          
 
             CarregarComboGrupo();
 
             //passo direto para a view de listar e não para a action
-            return View("Listar", resultado);
+            return View("Listar", viewModel);
         }
 
         #endregion
@@ -91,24 +98,30 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
                    aluno.Professor.Add(prof);
                }
                */
-            var aluno = new Aluno()
+            if (ModelState.IsValid)
             {
-                Id = alunoViewModel.Id,
-                Nome = alunoViewModel.Nome,
-                DataNascimento = alunoViewModel.DataNascimento,
-                Desconto = alunoViewModel.Desconto,
-                Bolsa = alunoViewModel.Bolsa,
-                GrupoId = alunoViewModel.GrupoId,
-                
-               
-            };
-            _unit.AlunoRepository.Cadastrar(aluno);
-            _unit.Save();
-         
-            List<Grupo> grupos = (List<Grupo>)_unit.GrupoRepository.Listar();
-            ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
-            return RedirectToAction("Cadastrar",new { msg = "ALUNO Cadastrado com sucesso"});
+                var aluno = new Aluno()
+                {
+                    Id = alunoViewModel.Id,
+                    Nome = alunoViewModel.Nome,
+                    DataNascimento = alunoViewModel.DataNascimento,
+                    Desconto = alunoViewModel.Desconto,
+                    Bolsa = alunoViewModel.Bolsa,
+                    GrupoId = alunoViewModel.GrupoId,
 
+
+                };
+                _unit.AlunoRepository.Cadastrar(aluno);
+                _unit.Save();
+
+                List<Grupo> grupos = (List<Grupo>)_unit.GrupoRepository.Listar();
+                ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
+                return RedirectToAction("Cadastrar", new { msg = "ALUNO Cadastrado com sucesso" });
+            }else
+            {
+                alunoViewModel.ListaGrupo = ListarGrupos();
+                return View(alunoViewModel);
+            }
             //vou adicionar os options manualmente
            /* List<Professor> lista = (List<Professor>)_unit.ProfessorRepository.Listar();
             ViewBag.professores = lista;
@@ -134,10 +147,7 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         [HttpPost]
         public ActionResult Alterar(Aluno a)
         {
-            //SelectList
-            List<Grupo> grupos = (List<Grupo>)_unit.GrupoRepository.Listar();
-            ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
-
+            //SelectList   
             _unit.AlunoRepository.Alterar(a);
             _unit.Save();
             ViewBag.msg = "Alterado com sucesso";
