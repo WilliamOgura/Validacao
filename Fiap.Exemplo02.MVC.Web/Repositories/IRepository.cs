@@ -11,7 +11,7 @@ namespace Fiap.Exemplo02.MVC.Web.Repositories
     public interface IRepository<T>
     {
         void Cadastrar(T t);
-        void Atualizar(T t);
+        void Alterar(T t);
         void Remover(int id);
         T BuscarPorId(int id);
         ICollection<T> Listar();

@@ -18,7 +18,7 @@ namespace Fiap.Exemplo02.MVC.Web.Repositories
             _context = context;
         }
 
-        public void Atualizar(Grupo grupo)
+        public void Alterar(Grupo grupo)
         {
             _context.Entry(grupo).State = EntityState.Modified;
             _context.Entry(grupo.Projeto).State = EntityState.Modified;

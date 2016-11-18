@@ -19,7 +19,7 @@ namespace Fiap.Exemplo02.MVC.Web.Repositories
             _dbSet = _context.Set<T>(); //pega tipo do DbSet
         }
 
-        public virtual void Atualizar(T t)
+        public virtual void Alterar(T t)
         {
             _context.Entry(t).State = System.Data.Entity.EntityState.Modified;
         }

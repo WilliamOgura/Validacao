@@ -1,5 +1,4 @@
-﻿@using Fiap.Exemplo02.MVC.Web.Models
-@model Aluno
+﻿@model Fiap.Exemplo02.MVC.Web.ViewModels.AlunoViewModel
 
 @{
     ViewBag.Title = "Cadastrar";
@@ -7,7 +6,7 @@
 
 <h2>Cadastrar Aluno</h2>
 
-@if (ViewBag.msg != null)
+@if (Model.Mensagem != null)
 {
     <div class="alert alert-success">
         @ViewBag.msg
@@ -36,17 +35,17 @@
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                @Html.LabelFor(a => a.Grupo)
+                @Html.LabelFor(a => a.GrupoId)
                 <!-- Primeira propriedade é onde ele vai setar o valor escolhido-->
-                @Html.DropDownListFor(a => a.GrupoId, ViewBag.grupos as SelectList, "Selecione", new { @class = "form-control" })
+                @Html.DropDownListFor(a => a.GrupoId, Model.ListaGrupo, "Selecione", new { @class = "form-control" })
             </div>
         </div>
     </div>
 
-    <div class="row">
+  /* <div class="row">
         <div class="col-md-12">
             <div class="form-group">
-                @Html.LabelFor(a => a.Professor)
+                @Html.LabelFor(a => a.professores)
                 <select name="ProfessoresId" class="selectpicker" multiple>
                     @foreach (var p in ViewBag.professores)
                     {
@@ -55,7 +54,7 @@
                 </select>
             </div>
         </div>
-    </div>
+    </div>*/
     <div class="row">
         <div class="col-md-12">
             <div class="form-group">

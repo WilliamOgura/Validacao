@@ -19,7 +19,7 @@ namespace Fiap.Exemplo02.MVC.Web.Repositories
             _context = context;
         }
 
-        public void Atualizar(Aluno aluno)
+        public void Alterar(Aluno aluno)
         {
            _context.Entry(aluno).State = EntityState.Modified;
         }

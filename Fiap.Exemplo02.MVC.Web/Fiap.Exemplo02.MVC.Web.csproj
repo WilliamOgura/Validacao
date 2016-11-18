@@ -234,8 +234,8 @@
     <Content Include="scripts\principal.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\ALuno\Listar.cshtml" />
-    <Content Include="Views\ALuno\Alterar.cshtml" />
+    <Content Include="Views\Aluno\Listar.cshtml" />
+    <Content Include="Views\Aluno\Alterar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -283,6 +283,7 @@
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Repositories\ProfessorRepository.cs" />
     <Compile Include="UnitsOfWork\UnitOfWork.cs" />
+    <Compile Include="ViewModels\AlunoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -299,8 +300,8 @@
     </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\ALuno\Cadastrar.cshtml" />
-    <Content Include="Views\ALuno\_ModalConfirmacao.cshtml" />
+    <Content Include="Views\Aluno\Cadastrar.cshtml" />
+    <Content Include="Views\Aluno\_ModalConfirmacao.cshtml" />
     <Content Include="Views\Grupo\Cadastrar.cshtml" />
     <Content Include="Views\Grupo\Listar.cshtml" />
     <Content Include="Views\Grupo\Editar.cshtml" />

@@ -45,7 +45,7 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         [HttpPost]
         public ActionResult Editar(Grupo g)
         {
-            _unit.GrupoRepository.Atualizar(g);
+            _unit.GrupoRepository.Alterar(g);
             _unit.Save();
             TempData["msg"] = "Alterado com sucesso";
             return View(g);
