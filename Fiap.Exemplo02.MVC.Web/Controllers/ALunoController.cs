@@ -23,6 +23,10 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
             List<Grupo> grupos = (List<Grupo>)_unit.GrupoRepository.Listar();
             ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
 
+            //
+            List<Professor> lista = (List<Professor>)_unit.ProfessorRepository.Listar();
+            ViewBag.professores = lista;
+
             return View();
         }
 
@@ -74,14 +78,25 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
 
         #region POST
         [HttpPost]
-        public ActionResult Cadastrar(Aluno aluno)
+        public ActionResult Cadastrar(Aluno aluno, int[] ProfessoresId)
         {
+            foreach(var id in ProfessoresId)
+            {
+                Professor prof = _unit.ProfessorRepository.BuscarPorId(id);
+                aluno.Professor.Add(prof);
+            }
+
             _unit.AlunoRepository.Cadastrar(aluno);
             _unit.Save();
-
-            ViewBag.msg = "Cadastrado com sucesso";
+           
             List<Grupo> grupos = (List<Grupo>)_unit.GrupoRepository.Listar();
             ViewBag.grupos = new SelectList(grupos, "Id", "Nome");
+
+            //vou adicionar os options manualmente
+            List<Professor> lista = (List<Professor>)_unit.ProfessorRepository.Listar();
+            ViewBag.professores = lista;
+
+            ViewBag.msg = "Cadastrado com sucesso " + ProfessoresId.Count();
             return View();
         }
 

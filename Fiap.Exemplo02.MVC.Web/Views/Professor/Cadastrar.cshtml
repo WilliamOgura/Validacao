@@ -1,0 +1,40 @@
+﻿@using Fiap.Exemplo02.MVC.Web.Models
+@model Professor
+
+@{
+    ViewBag.Title = "Cadastrar";
+}
+
+<h1>Cadastrar</h1>
+
+
+@if (TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["msg"]
+    </div>
+}
+
+@using (@Html.BeginForm())
+{
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(p => p.Nome)
+                @Html.TextBoxFor(p => p.Nome, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                @Html.LabelFor(p => p.Salario)
+                @Html.TextBoxFor(p => p.Salario, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Cadastrar" />
+}
+

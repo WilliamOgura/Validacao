@@ -51,8 +51,8 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.5\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -127,6 +127,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-select.css" />
+    <Content Include="Content\bootstrap-select.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -146,6 +148,8 @@
     </Content>
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
+    <Content Include="scripts\bootstrap-select.js" />
+    <Content Include="scripts\bootstrap-select.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -156,8 +160,72 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="scripts\bootstrap-select.js.map" />
+    <Content Include="Content\bootstrap-select.css.map" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <None Include="scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="scripts\i18n\defaults-ar_AR.js" />
+    <Content Include="scripts\i18n\defaults-ar_AR.min.js" />
+    <Content Include="scripts\i18n\defaults-bg_BG.js" />
+    <Content Include="scripts\i18n\defaults-bg_BG.min.js" />
+    <Content Include="scripts\i18n\defaults-cro_CRO.js" />
+    <Content Include="scripts\i18n\defaults-cro_CRO.min.js" />
+    <Content Include="scripts\i18n\defaults-cs_CZ.js" />
+    <Content Include="scripts\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="scripts\i18n\defaults-da_DK.js" />
+    <Content Include="scripts\i18n\defaults-da_DK.min.js" />
+    <Content Include="scripts\i18n\defaults-de_DE.js" />
+    <Content Include="scripts\i18n\defaults-de_DE.min.js" />
+    <Content Include="scripts\i18n\defaults-en_US.js" />
+    <Content Include="scripts\i18n\defaults-en_US.min.js" />
+    <Content Include="scripts\i18n\defaults-es_CL.js" />
+    <Content Include="scripts\i18n\defaults-es_CL.min.js" />
+    <Content Include="scripts\i18n\defaults-eu.js" />
+    <Content Include="scripts\i18n\defaults-eu.min.js" />
+    <Content Include="scripts\i18n\defaults-fa_IR.js" />
+    <Content Include="scripts\i18n\defaults-fa_IR.min.js" />
+    <Content Include="scripts\i18n\defaults-fi_FI.js" />
+    <Content Include="scripts\i18n\defaults-fi_FI.min.js" />
+    <Content Include="scripts\i18n\defaults-fr_FR.js" />
+    <Content Include="scripts\i18n\defaults-fr_FR.min.js" />
+    <Content Include="scripts\i18n\defaults-hu_HU.js" />
+    <Content Include="scripts\i18n\defaults-hu_HU.min.js" />
+    <Content Include="scripts\i18n\defaults-id_ID.js" />
+    <Content Include="scripts\i18n\defaults-id_ID.min.js" />
+    <Content Include="scripts\i18n\defaults-it_IT.js" />
+    <Content Include="scripts\i18n\defaults-it_IT.min.js" />
+    <Content Include="scripts\i18n\defaults-ko_KR.js" />
+    <Content Include="scripts\i18n\defaults-ko_KR.min.js" />
+    <Content Include="scripts\i18n\defaults-lt_LT.js" />
+    <Content Include="scripts\i18n\defaults-lt_LT.min.js" />
+    <Content Include="scripts\i18n\defaults-nb_NO.js" />
+    <Content Include="scripts\i18n\defaults-nb_NO.min.js" />
+    <Content Include="scripts\i18n\defaults-nl_NL.js" />
+    <Content Include="scripts\i18n\defaults-nl_NL.min.js" />
+    <Content Include="scripts\i18n\defaults-pl_PL.js" />
+    <Content Include="scripts\i18n\defaults-pl_PL.min.js" />
+    <Content Include="scripts\i18n\defaults-pt_BR.js" />
+    <Content Include="scripts\i18n\defaults-pt_BR.min.js" />
+    <Content Include="scripts\i18n\defaults-pt_PT.js" />
+    <Content Include="scripts\i18n\defaults-pt_PT.min.js" />
+    <Content Include="scripts\i18n\defaults-ro_RO.js" />
+    <Content Include="scripts\i18n\defaults-ro_RO.min.js" />
+    <Content Include="scripts\i18n\defaults-ru_RU.js" />
+    <Content Include="scripts\i18n\defaults-ru_RU.min.js" />
+    <Content Include="scripts\i18n\defaults-sk_SK.js" />
+    <Content Include="scripts\i18n\defaults-sk_SK.min.js" />
+    <Content Include="scripts\i18n\defaults-sl_SI.js" />
+    <Content Include="scripts\i18n\defaults-sl_SI.min.js" />
+    <Content Include="scripts\i18n\defaults-sv_SE.js" />
+    <Content Include="scripts\i18n\defaults-sv_SE.min.js" />
+    <Content Include="scripts\i18n\defaults-tr_TR.js" />
+    <Content Include="scripts\i18n\defaults-tr_TR.min.js" />
+    <Content Include="scripts\i18n\defaults-ua_UA.js" />
+    <Content Include="scripts\i18n\defaults-ua_UA.min.js" />
+    <Content Include="scripts\i18n\defaults-zh_CN.js" />
+    <Content Include="scripts\i18n\defaults-zh_CN.min.js" />
+    <Content Include="scripts\i18n\defaults-zh_TW.js" />
+    <Content Include="scripts\i18n\defaults-zh_TW.min.js" />
     <Content Include="scripts\jquery-3.1.1.js" />
     <Content Include="scripts\jquery-3.1.1.min.js" />
     <Content Include="scripts\jquery-3.1.1.slim.js" />
@@ -173,6 +241,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AlunoController.cs" />
     <Compile Include="Controllers\GrupoController.cs" />
+    <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -238,6 +307,8 @@
     <Content Include="Views\Grupo\_ModalConfirmacao.cshtml" />
     <Content Include="scripts\jquery-3.1.1.slim.min.map" />
     <Content Include="scripts\jquery-3.1.1.min.map" />
+    <Content Include="Views\Professor\Cadastrar.cshtml" />
+    <Content Include="Views\Professor\Listar.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

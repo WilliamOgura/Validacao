@@ -12,6 +12,13 @@
         $("div.desconto").css("display", "block");
     }
 
+    //activate selectpicker
+    $('.selectpicker').selectpicker({
+        style: 'btn-primary',
+        size: 4
+    });
+
+
 });
 
 function passarID(id) {
