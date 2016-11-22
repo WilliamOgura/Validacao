@@ -7,10 +7,10 @@
         });
     });
 
-    //na hora de carregar o form
+    /*na hora de carregar o form
     if($("#Bolsa").attr("checked")=="checked") {
         $("div.desconto").css("display", "block");
-    }
+    }*/
 
     //activate selectpicker
     $('.selectpicker').selectpicker({

@@ -22,7 +22,7 @@ namespace Fiap.Exemplo02.MVC.Web.Controllers
         {
             var viewModel = new AlunoViewModel();
             viewModel.ListaGrupo = ListarGrupos();
-
+            viewModel.DataNascimento = DateTime.Now;
 
             List<Professor> lista = (List<Professor>)_unit.ProfessorRepository.Listar();
             ViewBag.professores = lista;

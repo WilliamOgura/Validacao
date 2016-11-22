@@ -29,7 +29,7 @@
         <div class="col-md-12">
             <div class="form-group">
                 @Html.LabelFor(a => a.DataNascimento)
-                @Html.TextBoxFor(a => a.DataNascimento, new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
+                @Html.TextBoxFor(a => a.DataNascimento,"{0:dd/MM/yyyy}", new { @class = "form-control" }) <!--qualquer atributo do html, (arroba) é escape-->
                 @Html.ValidationMessageFor(a => a.DataNascimento)
               </div>
         </div>
@@ -80,3 +80,21 @@
             <input type="submit" value="Enviar" class="btn btn-primary" />
 }
 
+@section scripts{    
+    <script>
+        $().ready(function () {
+            if ($("#Bolsa").attr("checked") == "checked") {
+                $("#Desconto").parent().css("display", "block");
+            } else {
+                $("#Desconto").parent().css("display", "none");
+            }
+
+            //Quando clicar no checkbox Bolsa
+            $("#Bolsa").click(function () {
+                //Esconde ou exibe desconto
+                $("#Desconto").parent().slideToggle();
+                $("#Desconto").focus();
+            });
+        });
+    </script>        
+}

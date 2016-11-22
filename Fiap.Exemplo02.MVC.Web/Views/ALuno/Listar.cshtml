@@ -4,6 +4,7 @@
     ViewBag.Title = "Listar";
 }
 
+
 <h2>Listar Alunos</h2>
 
 @if (TempData["msg"] != null)
@@ -13,7 +14,7 @@
     </div>
 }
 
-@using (Html.BeginForm("Buscar", "Aluno", FormMethod.Get, new { @class = "form-inline" }))
+@using (Html.BeginForm("Buscar", "Aluno", FormMethod.Get, new { @class = "form-inline", id="formularioBusca" }))
 {
     <div class="row">
         <div class="col-md-3">
@@ -61,3 +62,27 @@
 
 @Html.Partial("_ModalConfirmacao")
 
+@section scripts{
+<script>
+    $().ready(function () {
+        //Selecionar o select da busca de grupos
+        $("#IdBusca").onchange(function () {
+            //Seleciona o formulário e faz o submit
+            $("formularioBusca").submit();
+        });
+    });
+</script>
+
+<script>
+        $().ready(function () {
+            //Esconder os botões da tabela
+            $("td > button, td > a").css("visibility", "hidden");
+            //Quando o mouse passar por cima da linha, Exibe os botões
+            $("tr").hover(function () {
+                $(this).find("button,a").visible;
+            }, function () {
+                $(this).find("button,a").visible;
+            });
+        });
+</script>
+}
